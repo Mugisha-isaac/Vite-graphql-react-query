@@ -26,9 +26,15 @@ query($code: ID!){
 export const App = () => {
 
 // Fetch data from custom hook that uses React-QUery
-const {data,isLoading,error} = useGQLQuery('countries',GET_COUNTRIES,{
+// const {data,isLoading,error} = useGQLQuery('countries',GET_COUNTRIES,{
+//   code:'SE'
+// })
+
+const {data,isLoading,error} = useGQLQuery('countries', GET_COUNTRY,{
   code:'SE'
-})
+});
+
+console.log(data);
 
  if(isLoading) return <div>is loading....</div>
  if(error) return <div>Something went wrong!</div>
@@ -36,11 +42,12 @@ const {data,isLoading,error} = useGQLQuery('countries',GET_COUNTRIES,{
   return (
 
     <div>
-      {data.countries.map((country: { name: boolean | Key | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | null | undefined; })=>(
+      {/* {data.countries.map((country: { name: boolean | Key | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | null | undefined; })=>(
         <div key={country.name}>
             {country.name}
         </div>
-      ))}
+      ))} */}
+      {data.country.name}
     </div>
 
 
